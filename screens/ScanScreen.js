@@ -3,7 +3,7 @@ import { StyleSheet, Text, TouchableOpacity, View,Image } from 'react-native';
 import * as Permissions from "expo-permissions";
 import {BarCodeScanner} from "expo-barcode-scanner";
 
-export default class ScanScreen extends React.Component(){
+export default class ScanScreen extends React.Component{
     constructor(){
         super();
         this.state = {
@@ -33,7 +33,7 @@ export default class ScanScreen extends React.Component(){
         const scanned = this.state.scanned;
         const scannedData= this.state.scannedData;
 
-        if(buttonState === "clicked" && hasCameraPermissions){
+        if(this.state.buttonState === "clicked" && hasCameraPermissions){
             return(
                 <BarCodeScanner
                 
@@ -45,7 +45,7 @@ export default class ScanScreen extends React.Component(){
             );
         }
 
-        else if(buttonState === "normal"){
+        else if(this.state.buttonState === "normal"){
                 return(
                     <View style = {styles.container}>
                         <Text style={styles.displayText}>{
@@ -64,7 +64,7 @@ export default class ScanScreen extends React.Component(){
                                 style = {{width:200,height:200}}
                                 />
                                
-                                <Text>Scan Qr Code</Text>
+                                <Text style = {{fontSize:20,marginTop:30}}>Scan Qr Code</Text>
                         </TouchableOpacity>
                             
                     </View>
@@ -89,12 +89,17 @@ const styles = StyleSheet.create({
       displayText:{
           flex:1,
           alignItems:'center',
-          justifyContent:'center'
+          justifyContent:'center',
+          marginTop:70,
+          fontSize:20
       },
       scanButton:{
         flex:1,
         alignItems:'center',
-        justifyContent:'center'
+        justifyContent:'center',
+        marginBottom:400
+
+
     }
   });
   
