@@ -17,7 +17,8 @@ export default class ScanScreen extends React.Component{
         const {status} = await Permissions.askAsync(Permissions.CAMERA);
 
         this.setState({
-            hasCameraPermissions:status === "granted"
+            hasCameraPermissions:status === "granted",buttonState:"clicked",
+            scan:false
         });
     }
     handleBarCodeScanner=async({type,data})=>{
