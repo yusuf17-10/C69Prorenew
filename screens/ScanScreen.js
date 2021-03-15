@@ -38,8 +38,8 @@ export default class ScanScreen extends React.Component{
             return(
                 <BarCodeScanner
                 
-                    onBarCodeScanned={scanned ? undefined : this.handleBarCodeScanned}
-                    style = {styles.absoluteFillObject}
+                    onBarCodeScanned={scanned ? undefined : this.handleBarCodeScanner}
+                    style = {StyleSheet.absoluteFillObject}
                 
                 />
 
@@ -49,10 +49,7 @@ export default class ScanScreen extends React.Component{
         else if(this.state.buttonState === "normal"){
                 return(
                     <View style = {styles.container}>
-                        <Text style={styles.displayText}>{
-                             hasCameraPermissions === true ? this.state.scannedData:"RequestCameraPermission"
-
-                        }</Text>
+                        
 
                         <TouchableOpacity
                         
@@ -67,7 +64,9 @@ export default class ScanScreen extends React.Component{
                                
                                 <Text style = {{fontSize:20,marginTop:30}}>Scan Qr Code</Text>
                         </TouchableOpacity>
-                            
+                        <Text style={styles.displayText}>
+                            {"scannedData :  " +this.state.scannedData}
+                        </Text>
                     </View>
                 )
         }
@@ -76,31 +75,23 @@ export default class ScanScreen extends React.Component{
 
 
 const styles = StyleSheet.create({
-    absoluteFillObject: {
-      flex: 1,
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
+    
     container: {
-        flex: 1,
-        alignItems: 'center',
+        
+        alignItems: 'center'
 
-        justifyContent: 'center',
       },
       displayText:{
-          flex:1,
           alignItems:'center',
           justifyContent:'center',
           marginTop:70,
           fontSize:20
       },
       scanButton:{
-        flex:1,
+        
         alignItems:'center',
         justifyContent:'center',
-        marginBottom:400
-
-
+        marginBottom:30
     }
   });
   
